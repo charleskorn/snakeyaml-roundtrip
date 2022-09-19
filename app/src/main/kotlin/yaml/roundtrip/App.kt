@@ -12,8 +12,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 fun main() {
-    val resolvedPath = Paths.get("input.yaml").toAbsolutePath()
-    val inputText = Files.readString(resolvedPath)
+    val inputPath = Paths.get("input.yaml").toAbsolutePath()
+    val inputText = Files.readString(inputPath)
 
     val loadSettings = LoadSettings.builder()
         .setParseComments(true)
@@ -42,12 +42,8 @@ fun main() {
     }
 
     val outputText = output.toString()
-    println("Output is:")
     println(outputText)
 
-    if (outputText != inputText) {
-        println("Emitted YAML is different!")
-    } else {
-        println("Emitted YAML is the same.")
-    }
+    val outputPath = Paths.get("output.yaml").toAbsolutePath()
+    Files.writeString(outputPath, outputText, Charsets.UTF_8)
 }
