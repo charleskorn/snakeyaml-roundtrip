@@ -12,7 +12,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 fun main() {
-    val inputPath = Paths.get("input.yaml").toAbsolutePath()
+    val inputPath = Paths.get("..", "input.yaml").toAbsolutePath()
     val inputText = Files.readString(inputPath)
 
     val loadSettings = LoadSettings.builder()
@@ -44,6 +44,6 @@ fun main() {
     val outputText = output.toString()
     println(outputText)
 
-    val outputPath = Paths.get("output.yaml").toAbsolutePath()
+    val outputPath = Paths.get("..", "output.yaml").toAbsolutePath()
     Files.writeString(outputPath, outputText, Charsets.UTF_8)
 }
